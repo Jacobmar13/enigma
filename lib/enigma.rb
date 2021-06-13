@@ -8,7 +8,7 @@ class Enigma
 
   def encrypt(message, key = @default_key, date = Time.now.strftime("%d%m%y"))
     encryption = Hash.new
-    encryption[:encryption] = message
+    encryption[:encryption] = message.downcase
     encryption[:key] = key
     encryption[:date] = date
     encryption
