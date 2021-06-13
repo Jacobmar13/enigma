@@ -22,10 +22,12 @@ RSpec.describe Enigma do
          })
   end
   it 'can provide a date with no date argument' do
-    expect(@enigma_1.encrypt("hello world", "02715")).to eq({
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "130621"
-    })
+    encrypted = @enigma_1.encrypt("hello world", "02715")
+    expect(encrypted[:date]).to eq(Time.now.strftime("%d%m%y"))
+  end
+
+  it 'can provide a random five digit number and date with no key or date argument' do
+    encrypted = @enigma_1.encrypt("hello world")
+    expect(encrypted[:key].length).to eq(5)
   end
 end
