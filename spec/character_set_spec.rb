@@ -6,6 +6,6 @@ require 'character_set'
 RSpec.describe CharacterSet do
   it 'exists' do
     character_set = CharacterSet.new
-    expect(character_set.set).to be_a(CharacterSet)
+    expect(character_set).to be_a(CharacterSet)
   end
 end
