@@ -1,7 +1,18 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/jacobmartinez/turing/projects/enigma/lib/character_set.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      }
     },
-    "timestamp": 1623613640
+    "timestamp": 1623614101
   }
 }
