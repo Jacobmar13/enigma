@@ -10,7 +10,7 @@ class Encryption
   end
 
   def split_message
-    @message.split("")
+    @message.downcase.split("")
   end
 
   def encryption_key
@@ -36,21 +36,30 @@ class Encryption
 
   def encrypt_character(character, shift)
     char_index = @char_set.set.index(character)
-    new_index = char_index + shift
+    if (char_index + (shift % 27)) <= 27
+      new_index = (char_index + (shift % 27))
+    elsif (char_index + (shift % 27)) > 27
+      new_index = (char_index + (shift % 27)) - 27
+    end
     @char_set.set[new_index]
   end
 
   def encrypt_message
-    split_message.map do |character|
-      if split_message.index(character) == 0
-        encrypt_character(character, final_shift[0])
-      elsif split_message.index(character) == 1
-        encrypt_character(character, final_shift[1])
-      elsif split_message.index(character) == 2
-        encrypt_character(character, final_shift[2])
-      elsif split_message.index(character) == 3
-        encrypt_character(character, final_shift[3])
+    final_encryption = split_message.map.with_index do |character, index|
+      if @char_set.set.include?(character)
+        if index % 4 == 0
+          encrypt_character(character, final_shift[0])
+        elsif index % 4 == 1
+          encrypt_character(character, final_shift[1])
+        elsif index % 4 == 2
+          encrypt_character(character, final_shift[2])
+        elsif index % 4 == 3
+          encrypt_character(character, final_shift[3])
+        end
+      else
+        character
       end
     end
+    final_encryption.join
   end
 end
