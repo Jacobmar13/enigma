@@ -51,5 +51,6 @@ class Encryption
       elsif split_message.index(character) == 3
         encrypt_character(character, final_shift[3])
       end
+    end
   end
 end
