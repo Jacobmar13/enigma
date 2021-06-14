@@ -3,6 +3,7 @@ SimpleCov.start
 require 'rspec'
 require 'enigma'
 require 'character_set'
+require 'encryption'
 
 RSpec.describe Enigma do
   before :each do
@@ -14,7 +15,7 @@ RSpec.describe Enigma do
     expect(@enigma_1).to be_a(Enigma)
   end
 
-  xit 'has an encrypt method' do
+  it 'has an encrypt method' do
     expect(@enigma_1.encrypt("hello world", "02715", "040895")).to eq({
            encryption: "keder ohulw",
            key: "02715",
@@ -24,10 +25,14 @@ RSpec.describe Enigma do
   it 'can provide a date with no date argument' do
     encrypted = @enigma_1.encrypt("hello world", "02715")
     expect(encrypted[:date]).to eq(Time.now.strftime("%d%m%y"))
+    expect(encrypted[:key].length).to eq(5)
+    expect(encrypted[:encryption]).to be_a_kind_of(String)
   end
 
   it 'can provide a random five digit number and date with no key or date argument' do
     encrypted = @enigma_1.encrypt("hello world")
     expect(encrypted[:key].length).to eq(5)
+    expect(encrypted[:date]).to eq(Time.now.strftime("%d%m%y"))
+    expect(encrypted[:encryption]).to be_a_kind_of(String)
   end
 end
