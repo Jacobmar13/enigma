@@ -39,4 +39,17 @@ class Encryption
     new_index = char_index + shift
     @char_set.set[new_index]
   end
+
+  def encrypt_message
+    split_message.map do |character|
+      if split_message.index(character) == 0
+        encrypt_character(character, final_shift[0])
+      elsif split_message.index(character) == 1
+        encrypt_character(character, final_shift[1])
+      elsif split_message.index(character) == 2
+        encrypt_character(character, final_shift[2])
+      elsif split_message.index(character) == 3
+        encrypt_character(character, final_shift[3])
+      end
+  end
 end
