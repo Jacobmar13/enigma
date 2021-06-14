@@ -1,4 +1,5 @@
 require 'key_generator'
+require 'encryption'
 
 class Enigma
 
@@ -7,8 +8,8 @@ class Enigma
   end
 
   def encrypt(message, key = @default_key, date = Time.now.strftime("%d%m%y"))
-    encryption = Hash.new
-    encryption[:encryption] = message.downcase
+    encryption = {}
+    encryption[:encryption] = Encryption.new(message, key, date).encrypt_message
     encryption[:key] = key
     encryption[:date] = date
     encryption
