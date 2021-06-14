@@ -31,6 +31,21 @@ RSpec.describe Encryption do
 
   it 'can encrypt a character' do
     encrypted_message = Encryption.new("hello world", "02715", "040895")
-    expect(encrypted_message.encrypt_character("h", 0)).to eq([3, 27, 73, 20])
+    expect(encrypted_message.encrypt_character("h", 54)).to eq("h")
+  end
+
+  it 'can encrypt a message' do
+    encrypted_message = Encryption.new("hello world", "02715", "040895")
+    expect(encrypted_message.encrypt_message).to eq("keder ohulw")
+  end
+
+  it 'can pass through special characters' do
+    encrypted_message = Encryption.new("hello world!", "02715", "040895")
+    expect(encrypted_message.encrypt_message).to eq("keder ohulw!")
+  end
+
+  it 'can accept capitalization' do
+    encrypted_message = Encryption.new("HELLO WORLD", "02715", "040895")
+    expect(encrypted_message.encrypt_message).to eq("keder ohulw")
   end
 end
