@@ -14,4 +14,8 @@ class Enigma
     encryption[:date] = date
     encryption
   end
+
+  def decrypt(message, key, date)
+    Decryption.new(message, key, date).decrypt_message
+  end
 end
