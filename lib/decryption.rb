@@ -1,4 +1,4 @@
-require 'character_set'
+require_relative 'character_set'
 
 class Decryption
   

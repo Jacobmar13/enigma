@@ -1,14 +1,16 @@
-require 'key_generator'
-require 'encryption'
-require 'decryption'
+require_relative 'key_generator'
+require_relative 'encryption'
+require_relative 'decryption'
 
 class Enigma
+  attr_reader :default_key, :default_date
 
   def initialize
     @default_key = KeyGenerator.new.key
+    @default_date = Time.now.strftime("%d%m%y")
   end
 
-  def encrypt(message, key = @default_key, date = Time.now.strftime("%d%m%y"))
+  def encrypt(message, key = @default_key, date = @default_date)
     encryption = {}
     encryption[:encryption] = Encryption.new(message, key, date).encrypt_message
     encryption[:key] = key
