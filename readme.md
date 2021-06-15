@@ -1,0 +1,1 @@
+My self is assessment is a 2 on functionality, a 3 on Object Oriented Programming, a 3 on Ruby Conventions and Mechanics, and a 3 Test Driven Development.
