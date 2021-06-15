@@ -2,9 +2,6 @@ require 'simplecov'
 SimpleCov.start
 require 'rspec'
 require 'enigma'
-require 'character_set'
-require 'encryption'
-require 'decryption'
 
 RSpec.describe Enigma do
   before :each do
