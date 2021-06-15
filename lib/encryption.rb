@@ -36,9 +36,9 @@ class Encryption
 
   def encrypt_character(character, shift)
     char_index = @char_set.set.index(character)
-    if (char_index + (shift % 27)) <= 27
+    if (char_index + (shift % 27)) < 27
       new_index = (char_index + (shift % 27))
-    elsif (char_index + (shift % 27)) > 27
+    elsif (char_index + (shift % 27)) >= 27
       new_index = (char_index + (shift % 27)) - 27
     end
     @char_set.set[new_index]
