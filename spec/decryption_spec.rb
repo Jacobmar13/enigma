@@ -11,7 +11,7 @@ RSpec.describe Decryption do
 
   it 'can transform a message into an array' do
     decrypted_message = Decryption.new("keder ohulw", "02715", "040895")
-    expect(decrypted_message.split_message).to eq(["k", "e", "d", "e", "r", " ", "o", "h" "u", "l", "w"])
+    expect(decrypted_message.split_message).to eq(["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w"])
   end
 
   it 'can make a decryption key' do
@@ -31,7 +31,7 @@ RSpec.describe Decryption do
 
   it 'can decrypt a character' do
     decrypted_message = Decryption.new("keder ohulw", "02715", "040895")
-    expect(decrypted_message.decrypt_character("h", 54)).to eq("h")
+    expect(decrypted_message.decrypt_character("k", 3)).to eq("h")
   end
 
   it 'can decrypt a message' do
