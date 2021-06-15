@@ -1,5 +1,6 @@
 require 'key_generator'
 require 'encryption'
+require 'decryption'
 
 class Enigma
 
@@ -16,6 +17,10 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-    Decryption.new(message, key, date).decrypt_message
+    decryption = {}
+    decryption[:decryption] = Decryption.new(message, key, date).decrypt_message
+    decryption[:key] = key
+    decryption[:date] = date
+    decryption
   end
 end
